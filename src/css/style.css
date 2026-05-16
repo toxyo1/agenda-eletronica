@@ -1,0 +1,165 @@
+/* Fonte poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #6366f1;
+}
+
+.card-cadastro {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    max-width: 400px;
+    background-color: #f6f8ff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 10px 25px -5px rgba(0, 0, 0, 0.15), 0px 8px 10px -6px rgba(0, 0, 0, 0.15);  
+}
+
+.card-cadastro h1 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #272727;
+    text-align: center;
+    padding-bottom: 8px;
+}
+
+.card-cadastro h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    border-radius: 30px;
+    background-color: #6366f1;
+    margin: 8px auto 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.caixa-pergunta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.caixa-pergunta label {
+    font-size: 12px;
+    color: #404044;
+    font-weight: 500;
+}
+
+.bloco-input {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 0 12px;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.05);
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.caixa-pergunta .bloco-input:focus-within {
+    border-color: #6366f1;
+    outline: 2px solid #6366f1;
+}
+
+.campo-digitar {
+    padding: 12px 10px;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+    color: #272727;
+}
+
+.campo-digitar:focus {
+    outline: none;
+}
+
+.bloco-input i {
+    color: #404044;
+    width: 24px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.bloco-input .fa-eye-slash:hover {
+    cursor: pointer;
+    color: #676770;
+}
+
+.link-login {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: -5px;
+    font-size: 13px;
+    color: #404044;
+}
+
+.link-login a {
+    color: #6366f1;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link-login a:hover {
+    text-decoration: underline;
+}
+
+.botao-cadastrar {
+    background-color: #6366f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #ffffff;
+    cursor: pointer;
+    gap: 8px;
+    box-shadow: 0px 10px 15px -3px rgba(99, 102, 241, 0.3);
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.botao-cadastrar:hover {
+    background-color: #818cf8;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
+
+@media screen and (max-width: 500px) {
+    body {
+        background-color: #f6f8ff;
+    }
+
+    .card-cadastro {
+        max-width: 100%;
+        min-height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 32px;
+    }
+}
