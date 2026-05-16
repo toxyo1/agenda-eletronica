@@ -1,4 +1,4 @@
-/* Fonte poppins */
+/* src/css/cadastro.css */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 * {
@@ -10,30 +10,44 @@
 
 body {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    background-color: #ffffff;
+}
+
+/* Container para centralizar o card no meio da tela */
+.conteudo-cadastro-clean {
+    flex: 1;
+    display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background-color: #6366f1;
+    padding: 40px 20px;
+    width: 100%;
 }
 
 .card-cadastro {
+    background-color: #f3e8ff; 
+    border-radius: 24px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    box-sizing: border-box;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.04), 
+        inset 0 2px 1px rgba(255, 255, 255, 0.7);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 100%;
     max-width: 400px;
-    background-color: #f6f8ff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0px 10px 25px -5px rgba(0, 0, 0, 0.15), 0px 8px 10px -6px rgba(0, 0, 0, 0.15);  
+    gap: 32px;
 }
 
 .card-cadastro h1 {
     font-size: 24px;
-    font-weight: 500;
-    color: #272727;
+    font-weight: 700;
+    color: #121214;
     text-align: center;
-    padding-bottom: 8px;
 }
 
 .card-cadastro h1::after {
@@ -42,7 +56,7 @@ body {
     width: 60px;
     height: 3px;
     border-radius: 30px;
-    background-color: #6366f1;
+    background-color: #7c3aed; 
     margin: 8px auto 0;
 }
 
@@ -59,34 +73,34 @@ form {
 }
 
 .caixa-pergunta label {
-    font-size: 12px;
-    color: #404044;
-    font-weight: 500;
+    font-size: 13px;
+    color: #4b5563;
+    font-weight: 600;
 }
 
 .bloco-input {
     display: flex;
     align-items: center;
     background-color: #ffffff;
-    border-radius: 8px;
-    padding: 0 12px;
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.05);
-    border: 1px solid transparent;
+    border-radius: 12px;
+    padding: 0 15px;
+    border: 2px solid #e5e7eb;
     transition: all 0.2s ease;
 }
 
 .caixa-pergunta .bloco-input:focus-within {
-    border-color: #6366f1;
-    outline: 2px solid #6366f1;
+    border-color: #7c3aed;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
 }
 
 .campo-digitar {
-    padding: 12px 10px;
+    padding: 12px 0;
     width: 100%;
     border: none;
     background-color: transparent;
     font-size: 14px;
-    color: #272727;
+    color: #1a1a1a;
 }
 
 .campo-digitar:focus {
@@ -94,7 +108,7 @@ form {
 }
 
 .bloco-input i {
-    color: #404044;
+    color: #9ca3af;
     width: 24px;
     font-size: 16px;
     text-align: center;
@@ -102,7 +116,7 @@ form {
 
 .bloco-input .fa-eye-slash:hover {
     cursor: pointer;
-    color: #676770;
+    color: #7c3aed;
 }
 
 .link-login {
@@ -110,40 +124,41 @@ form {
     margin-top: 10px;
     margin-bottom: -5px;
     font-size: 13px;
-    color: #404044;
+    color: #6b7280;
 }
 
 .link-login a {
-    color: #6366f1;
+    color: #7c3aed;
     text-decoration: none;
     font-weight: 600;
 }
 
 .link-login a:hover {
+    color: #6d28d9;
     text-decoration: underline;
 }
 
 .botao-cadastrar {
-    background-color: #6366f1;
+    background-color: #121214; /* Preto igual ao botão "Começar minha jornada" */
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
-    padding: 12px;
-    border-radius: 8px;
+    padding: 14px;
+    border-radius: 14px;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 600;
     color: #ffffff;
     cursor: pointer;
     gap: 8px;
-    box-shadow: 0px 10px 15px -3px rgba(99, 102, 241, 0.3);
-    transition: background-color 0.3s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease;
     margin-top: 10px;
     width: 100%;
 }
 
 .botao-cadastrar:hover {
-    background-color: #818cf8;
+    background-color: #1a1a1e;
+    transform: translateY(-1px);
 }
 
 input:-webkit-autofill {
@@ -151,10 +166,6 @@ input:-webkit-autofill {
 }
 
 @media screen and (max-width: 500px) {
-    body {
-        background-color: #f6f8ff;
-    }
-
     .card-cadastro {
         max-width: 100%;
         min-height: 100vh;

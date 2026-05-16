@@ -1,0 +1,294 @@
+/* --- ESTILOS DA PÁGINA INICIAL (INDEX) --- */
+
+/* 1. CONFIGURAÇÕES GERAIS E RESETS */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Evita qualquer rolagem lateral esquisita */
+}
+
+/* CORPO DA PÁGINA */
+.home-body {
+    background-color: #ffffff; 
+    color: #1a1a1a;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Navbar no topo, Footer na base */
+}
+
+/* 2. NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+    padding: 15px 60px; 
+    background-color: #fcfcfc;
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.08); 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.imagem-logo {
+    max-height: 45px; 
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-botoes {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.btn-nav-entrar {
+    text-decoration: none;
+    color: #4b5563; 
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.2s ease;
+}
+
+.btn-nav-entrar:hover {
+    color: #7c3aed;
+}
+
+.btn-nav-cadastro {
+    text-decoration: none;
+    background-color: #7c3aed;
+    color: #ffffff;
+    padding: 11px 26px;
+    border-radius: 50px; 
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: 0 4px 14px rgba(124, 58, 237, 0.25); 
+    transition: all 0.2s ease;
+}
+
+.btn-nav-cadastro:hover {
+    background-color: #6d28d9;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.35);
+}
+
+/* 3. ÁREA CENTRAL */
+.conteudo-home {
+    flex: 1;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    width: 100%;
+    max-width: 1380px; 
+    margin: 0 auto; 
+    padding: 30px 60px; 
+    box-sizing: border-box;
+    gap: 40px; 
+}
+
+/* Seção superior: Texto explicativo e Ilustração */
+.secao-introducao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 120px;
+}
+
+.texto-introducao {
+    flex: 1;
+    max-width: 550px;
+}
+
+.texto-introducao h1 {
+    color: #121214;
+    font-size: 46px;
+    line-height: 1.15;
+    margin: 0 0 16px 0;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.texto-introducao h1 span {
+    color: #7c3aed;
+}
+
+.texto-introducao p {
+    color: #4b5563;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.btn-comechar {
+    text-decoration: none;
+    background-color: #121214;
+    color: #ffffff;
+    padding: 14px 28px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    display: inline-flex; 
+    align-items: center;
+    gap: 12px;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-comechar:hover {
+    background-color: #1a1a1e;
+    transform: translateY(-2px);
+}
+
+.coluna-personagem {
+    flex: 0.8; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagem-boneca {
+    width: 100%;
+    max-height: 30vh; /* Ajustado levemente para dar mais folga vertical */
+    object-fit: contain; 
+}
+
+/* Seção inferior: Alinhamento dos 3 Cards de Benefícios */
+.grid-beneficios {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px; 
+    width: 100%;
+}
+
+.card-beneficio {
+    flex: 1;
+    background-color: #f3e8ff; 
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.04), 
+        inset 0 2px 1px rgba(255, 255, 255, 0.7);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-beneficio:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        0 20px 45px rgba(124, 58, 237, 0.08), 
+        inset 0 2px 1px rgba(255, 255, 255, 0.8);
+}
+
+.icone-card {
+    background-color: #ffffff;
+    color: #7c3aed;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 10px rgba(124, 58, 237, 0.1);
+}
+
+.card-beneficio h3 {
+    margin: 0 0 8px 0;
+    color: #121214;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.card-beneficio p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* 4. FOOTER (Correção Absoluta de Largura) */
+/* 4. FOOTER (Correção do Alinhamento do Texto) */
+/* 4. FOOTER (Texto Perfeitamente Centralizado na Tela) */
+.rodape {
+    display: flex;
+    align-items: center;
+    padding: 16px 60px; 
+    background-color: #f3e8ff; 
+    font-size: 13px;
+    color: #6b7280;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(124, 58, 237, 0.15); 
+    z-index: 10;
+    
+    width: 100%;
+    margin-top: auto;
+    flex-shrink: 0;
+    position: relative; /* Base para o alinhamento absoluto dos filhos */
+}
+
+.rodape-esquerdo {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+    
+    /* Mágica do alinhamento central */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.rodape p {
+    margin: 0; 
+    white-space: nowrap; 
+}
+
+.credito {
+    font-weight: 600;
+    color: #7c3aed; 
+}
+
+.rodape-direito {
+    display: flex;
+    gap: 12px;
+    
+    /* Fixa as redes sociais na ponta direita, sem empurrar o texto */
+    margin-left: auto; 
+}
+
+.link-social {
+    color: #7c3aed;
+    font-size: 16px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.6); 
+    border: 1px solid rgba(124, 58, 237, 0.1);
+    transition: all 0.2s ease;
+}
+
+.link-social:hover {
+    color: #ffffff;
+    background-color: #7c3aed; 
+    transform: translateY(-2px);
+}

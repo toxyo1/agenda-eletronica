@@ -1,34 +1,39 @@
 <?php
-// Inicializa as variáveis vazias para evitar avisos do PHP no primeiro carregamento
-$nome = "";
+// Inicia a sessão logo na primeira linha para garantir que o PHP capture os dados corretamente
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Inicializa as variáveis para evitar erros de undefined
 $email = "";
-$erro_email = "";
+$erro_login = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'conexao.php';
 
-    // Captura o que o usuário digitou
-    $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-
     try {
-        $stmt = $pdo->prepare("INSERT INTO usuario (nome, email, senha) VALUES (:nome, :email, :senha)");
-        $stmt->bindParam(':nome', $nome);
+        $stmt = $pdo->prepare("SELECT * FROM usuario WHERE email = :email");
         $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':senha', $senhaHash);
         $stmt->execute();
-
-        header("Location: login.php");
-        exit();
-    } catch (PDOException $erro) {
-        if ($erro->getCode() == 23000) {
-            $erro_email = "Esse e-mail já está sendo utilizado.";
+        
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($usuario && password_verify($senha, $usuario['senha'])) {
+            // Sincronizado perfeitamente com a trava de segurança da agenda.php
+            $_SESSION['id_usuario'] = $usuario['id'];
+            $_SESSION['usuario_nome'] = $usuario['nome'];
+            
+            header("Location: agenda.php");
+            exit();
         } else {
-            echo "Erro inesperado: " . $erro->getMessage();
+            $erro_login = "Usuário ou senha inválidos.";
         }
+
+    } catch (PDOException $erro) {
+        echo "Erro inesperado: " . $erro->getMessage();
     }
 }
 ?>
@@ -39,28 +44,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <link rel="stylesheet" href="src/css/home.css">
-    <link rel="stylesheet" href="src/css/cadastro.css">
-    <title>cadastro</title>
+    <link rel="stylesheet" href="src/css/login.css">
+    
+    <title>login</title>
 </head>
 <body>
 
     <?php include 'src/css/componentes/navbar.php'; ?>
 
-    <main class="conteudo-cadastro-clean">
-        <div class="card-cadastro">
-            <h1>Cadastro de Usuário</h1>
-
-            <form action="cadastro.php" method="POST">
+    <main class="conteudo-login-clean">
+        <div class="card-login">
+            <h1>Faça seu Login</h1>
+            
+            <form action="login.php" method="POST">
                 
-                <div class="caixa-pergunta">
-                    <label for="nome">Nome</label>
-                    <div class="bloco-input">
-                        <input type="text" id="nome" name="nome" class="campo-digitar" placeholder="Digite seu nome completo" value="<?php echo htmlspecialchars($nome); ?>" required>
-                        <i class="fa-regular fa-user"></i>
-                    </div>
-                </div>
-
                 <div class="caixa-pergunta">
                     <label for="email">E-mail</label>
                     <div class="bloco-input">
@@ -68,9 +67,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <i class="fa-regular fa-envelope"></i>
                     </div>
                     
-                    <?php if (!empty($erro_email)): ?>
+                    <?php if (!empty($erro_login)): ?>
                         <span style="color: #ef4444; font-size: 12px; margin-top: 5px; display: block; font-weight: 500;">
-                            <?php echo $erro_email; ?>
+                            <?php echo $erro_login; ?>
                         </span>
                     <?php endif; ?>
                 </div>
@@ -83,12 +82,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
 
-                <p class="link-login">
-                    Já tem conta? Faça <a href="login.php">login</a> aqui.
-                </p>
-                <button type="submit" class="botao-cadastrar">
-                    <i class="fa-solid fa-check"></i>
-                    Cadastrar
+                <p class="link-cadastro">Não tem uma conta? <a href="cadastro.php">Cadastre-se aqui.</a></p>
+
+                <button type="submit" class="botao-entrar">
+                    Entrar
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
                 </button>
             </form>
         </div>
