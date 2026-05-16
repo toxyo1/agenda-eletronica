@@ -1,26 +1,21 @@
-/* --- ESTILOS DA PÁGINA INICIAL (INDEX) --- */
-
-/* 1. CONFIGURAÇÕES GERAIS E RESETS */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     min-height: 100vh;
     box-sizing: border-box;
-    overflow-x: hidden; /* Evita qualquer rolagem lateral esquisita */
+    overflow-x: hidden;
 }
 
-/* CORPO DA PÁGINA */
 .home-body {
     background-color: #ffffff; 
     color: #1a1a1a;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Navbar no topo, Footer na base */
+    justify-content: space-between;
 }
 
-/* 2. NAVBAR */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -85,7 +80,6 @@ html, body {
     box-shadow: 0 6px 20px rgba(124, 58, 237, 0.35);
 }
 
-/* 3. ÁREA CENTRAL */
 .conteudo-home {
     flex: 1;
     display: flex;
@@ -99,7 +93,6 @@ html, body {
     gap: 40px; 
 }
 
-/* Seção superior: Texto explicativo e Ilustração */
 .secao-introducao {
     display: flex;
     align-items: center;
@@ -161,11 +154,10 @@ html, body {
 
 .imagem-boneca {
     width: 100%;
-    max-height: 30vh; /* Ajustado levemente para dar mais folga vertical */
+    max-height: 30vh;
     object-fit: contain; 
 }
 
-/* Seção inferior: Alinhamento dos 3 Cards de Benefícios */
 .grid-beneficios {
     display: flex;
     justify-content: space-between;
@@ -224,9 +216,6 @@ html, body {
     line-height: 1.5;
 }
 
-/* 4. FOOTER (Correção Absoluta de Largura) */
-/* 4. FOOTER (Correção do Alinhamento do Texto) */
-/* 4. FOOTER (Texto Perfeitamente Centralizado na Tela) */
 .rodape {
     display: flex;
     align-items: center;
@@ -241,7 +230,7 @@ html, body {
     width: 100%;
     margin-top: auto;
     flex-shrink: 0;
-    position: relative; /* Base para o alinhamento absoluto dos filhos */
+    position: relative;
 }
 
 .rodape-esquerdo {
@@ -249,7 +238,6 @@ html, body {
     align-items: center;
     gap: 15px; 
     
-    /* Mágica do alinhamento central */
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -269,7 +257,6 @@ html, body {
     display: flex;
     gap: 12px;
     
-    /* Fixa as redes sociais na ponta direita, sem empurrar o texto */
     margin-left: auto; 
 }
 

@@ -1,10 +1,8 @@
 <?php
-// Inicia a sessão logo na primeira linha para garantir que o PHP capture os dados corretamente
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Inicializa as variáveis para evitar erros de undefined
 $email = "";
 $erro_login = "";
 
@@ -22,7 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
         
         if ($usuario && password_verify($senha, $usuario['senha'])) {
-            // Sincronizado perfeitamente com a trava de segurança da agenda.php
             $_SESSION['id_usuario'] = $usuario['id'];
             $_SESSION['usuario_nome'] = $usuario['nome'];
             

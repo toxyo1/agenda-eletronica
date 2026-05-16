@@ -8,7 +8,6 @@ if (!isset($_SESSION['id_usuario'])) {
 }
 $id_usuario = $_SESSION['id_usuario']; 
 
-// 1. ROTA DE EXCLUSÃO
 if (isset($_GET['excluir_id'])) {
     $stmt = $pdo->prepare("DELETE FROM atividades WHERE id = :id AND user_id = :user_id");
     $stmt->execute([':id' => $_GET['excluir_id'], ':user_id' => $id_usuario]);
@@ -16,7 +15,6 @@ if (isset($_GET['excluir_id'])) {
     exit();
 }
 
-// 2. ROTA DE CADASTRO (CORRIGIDO: Agora grava o status inicial escolhido)
 if (isset($_POST['btn_salvar'])) {
     $stmt = $pdo->prepare("INSERT INTO atividades (user_id, nome, descricao, data_inicio, data_fim, status) VALUES (:user_id, :nome, :descricao, :data_inicio, :data_fim, :status)");
     $stmt->execute([
@@ -25,13 +23,12 @@ if (isset($_POST['btn_salvar'])) {
         ':descricao'   => $_POST['descricao'],
         ':data_inicio' => $_POST['data_inicio'],
         ':data_fim'    => $_POST['data_fim'],
-        ':status'      => $_POST['status'] // Recebe o status do cadastro
+        ':status'      => $_POST['status']
     ]);
     header("Location: agenda.php");
     exit();
 }
 
-// 3. ROTA DE EDIÇÃO (CORRIGIDO: Enviando os valores exatos que o seu ENUM aceita)
 if (isset($_POST['btn_editar'])) {
     $stmt = $pdo->prepare("UPDATE atividades SET nome = :nome, descricao = :descricao, data_inicio = :data_inicio, data_fim = :data_fim, status = :status WHERE id = :id AND user_id = :user_id");
     $stmt->execute([
@@ -41,13 +38,12 @@ if (isset($_POST['btn_editar'])) {
         ':descricao'   => $_POST['descricao'],
         ':data_inicio' => $_POST['data_inicio'],
         ':data_fim'    => $_POST['data_fim'],
-        ':status'      => $_POST['status'] // Grava 'andamento', 'concluida' ou 'feito'
+        ':status'      => $_POST['status']
     ]);
     header("Location: agenda.php");
     exit();
 }
 
-// 4. BUSCA DE EVENTOS
 $stmt = $pdo->prepare("SELECT id, nome AS title, data_inicio AS start, data_fim AS end, descricao, status FROM atividades WHERE user_id = :user_id");
 $stmt->execute([':user_id' => $id_usuario]);
 $eventos_json = json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
@@ -172,7 +168,6 @@ $eventos_json = json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
             alert("É isso aí! Foco total ativado para hoje.");
         }
 
-        // MODIFICADO: Agora inclui a seleção de status inicial já no cadastro
         function abrirModalCadastro() {
             document.getElementById('conteudoModalDinamic').innerHTML = `
                 <div style="display:flex; align-items:center; gap:10px; margin-bottom:15px;">
@@ -213,7 +208,6 @@ $eventos_json = json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
                     var horaTexto = ev.start.includes('T') ? ev.start.split('T')[1].substring(0, 5) : '';
                     var exibicaoTitulo = horaTexto ? `[${horaTexto}] ${ev.title}` : ev.title;
 
-                    // Exibição amigável baseada exatamente no ENUM do seu banco de dados
                     var textoStatus = 'PENDENTE';
                     if (ev.status === 'concluida') textoStatus = 'CONCLUÍDA';
 
@@ -246,7 +240,6 @@ $eventos_json = json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
             document.getElementById('modalPrincipal').style.display = 'flex';
         }
 
-        // MODIFICADO: As opções mapeiam perfeitamente para 'andamento', 'concluida' e 'feito'
         function abrirFormularioEdicao(eventoCodificado, dataOriginal) {
             var ev = JSON.parse(decodeURIComponent(eventoCodificado));
             var inicioFormatado = ev.start ? ev.start.substring(0, 16) : '';

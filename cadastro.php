@@ -1,5 +1,4 @@
 <?php
-// Inicializa as variáveis vazias para evitar avisos do PHP no primeiro carregamento
 $nome = "";
 $email = "";
 $erro_email = "";
@@ -7,7 +6,6 @@ $erro_email = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'conexao.php';
 
-    // Captura o que o usuário digitou
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];

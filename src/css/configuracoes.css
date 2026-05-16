@@ -36,34 +36,28 @@ body {
     border-color: #ef4444 !important;
     color: #b91c1c !important;
 }
-/* ==========================================================================
-   BOTÃO VOLTAR
-   ========================================================================== */
 
-/* Alinha o botão e o card em coluna */
 .container-config-com-voltar {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Alinha o botão totalmente à esquerda */
+    align-items: flex-start;
     width: 100%;
-    max-width: 450px; /* Mesma largura máxima do seu card */
-    gap: 12px; /* Distância entre o botão de voltar e o card */
+    max-width: 450px;
+    gap: 12px;
 }
 
-/* Estilo do link de voltar */
 .btn-voltar-pagina {
     text-decoration: none;
-    color: #4b5563; /* Cinza escuro discreto */
+    color: #4b5563;
     font-size: 14px;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
     gap: 8px;
     transition: color 0.2s ease;
-    padding-left: 4px; /* Pequeno ajuste visual com a borda do card */
+    padding-left: 4px;
 }
 
-/* Efeito ao passar o mouse */
 .btn-voltar-pagina:hover {
-    color: #7c3aed; /* Fica roxo ao passar o mouse */
+    color: #7c3aed;
 }
